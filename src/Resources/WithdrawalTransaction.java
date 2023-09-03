@@ -23,7 +23,7 @@ public class WithdrawalTransaction extends BasicTransaction {
         System.out.print(receipt);
         try (FileWriter fileWriter = new FileWriter(String.format("C:\\Users\\timmy\\IdeaProjects\\Clever-Bank\\src\\Check\\Check %d", checkNumber))) {
             fileWriter.write(receipt);
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         /*сохраняем в файл */

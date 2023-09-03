@@ -5,7 +5,6 @@ import Exceptions.InsufficientFundsException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class BasicTransaction implements ExecuteTransaction {
     protected final Account changeableAccount;
@@ -13,10 +12,10 @@ public abstract class BasicTransaction implements ExecuteTransaction {
     protected final LocalDateTime accrualTime;
     protected final Bank executingBank;
     /* изменяемый счет
-    * сумма
-    * время создания транзакции
-    * исполняющий банк
-    * */
+     * сумма
+     * время создания транзакции
+     * исполняющий банк
+     * */
 
     public String receiptTemplate =
             "--------------------------------------%n" +

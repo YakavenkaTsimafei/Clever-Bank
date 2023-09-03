@@ -30,8 +30,8 @@ public class Account {
         bank.addAccount(this);
         client.addAccounts(this);
         /* добавление счета в банк
-        *  добавление счета к клиенту
-        *  */
+         *  добавление счета к клиенту
+         *  */
     }
 
 

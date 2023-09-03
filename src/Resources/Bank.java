@@ -9,8 +9,8 @@ public class Bank {
     private final ArrayList<Account> accounts;
     private final String bankName;
     /* счета находящиеся в банке
-    * название банка
-    *  */
+     * название банка
+     *  */
 
     private static final BlockingQueue<Account> queueAccounts = new ArrayBlockingQueue<>(10);
     /* очередь в котору мы вносим счета которым нужно зачислить 1%*/
@@ -21,7 +21,7 @@ public class Bank {
         threadProducer.start();
         threadConsumer.start();
         /*запускаем потоки которые проверяют и начисляют 1%
-        * */
+         * */
     }
 
     public ArrayList<Account> getAccounts() {

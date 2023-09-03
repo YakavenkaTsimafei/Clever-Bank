@@ -4,6 +4,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -18,11 +19,11 @@ public class Client {
     private final ArrayList<Account> accounts;
     private final ArrayList<BasicTransaction> ClientTransactions;
     /* фамилия
-    *  имя
-    *  отчество
-    *  счета клиента
-    *  транзакции клиента
-    * */
+     *  имя
+     *  отчество
+     *  счета клиента
+     *  транзакции клиента
+     * */
 
     private final String statementTemplate =
             "                             Выписка %n" +
@@ -89,7 +90,7 @@ public class Client {
         for (BasicTransaction transaction : ClientTransactions) {
             if (transaction.getAccrualTime().isAfter(startDate) && transaction.getAccrualTime().isBefore(endDate) && executingBank.equals(transaction.getChangeableAccount().getBank())) {
                 /*проходим по транзакциям клиента если совпадает время и банк исполнитель то формируем шаблон */
-               transactions.add(transaction);
+                transactions.add(transaction);
                 statement = String.format(statementTemplate, transaction.getChangeableAccount().getBank().getBankName(), lastName, firstName, patronymic, transaction.getChangeableAccount().getAccountNumber(), dTF.format(transaction.getChangeableAccount().getAccountOpeningDate()), dTF.format(startDate), dTF.format(endDate), dTF.format(LocalDateTime.now()), LocalDateTime.now(), LocalDateTime.now(), transaction.getChangeableAccount().getBalance());
 
                 if (transaction instanceof TransactionToAnotherAccount) {
@@ -108,8 +109,8 @@ public class Client {
         String forSave = statement + translationsList;
         System.out.println(forSave);
         if (saveAs.equals("PDF")) {
-            try (Document document = new Document(new PdfDocument(new PdfWriter(String.format("C:\\Users\\timmy\\IdeaProjects\\Clever-Bank\\src\\Statement\\ PDF statement %d ",random.nextInt(10000) ))))) {
-                document.add(new Paragraph(statement+ translationsList));
+            try (Document document = new Document(new PdfDocument(new PdfWriter(String.format("C:\\Users\\timmy\\IdeaProjects\\Clever-Bank\\src\\Statement\\ PDF statement %d ", random.nextInt(10000)))))) {
+                document.add(new Paragraph(statement + translationsList));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -129,6 +130,5 @@ public class Client {
         /*сохраняем в TXT  */
         return transactions;
     }
-
 
 }
